@@ -2,11 +2,11 @@
     This class is only responsible for Handling user Authentication (Login)
     and if we add Register functionality it will be here too
 */
-package Application;
+package Services;
 
-import Data.PasswordUtils;
-import Data.User;
-import Data.UserRepository;
+import Core.PasswordUtils;
+import DataAccess.Models.User;
+import DataAccess.Repositories.UserRepository;
 
 public class AuthenticationService
 {

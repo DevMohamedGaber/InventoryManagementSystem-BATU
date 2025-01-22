@@ -3,7 +3,7 @@
     only definitions, no logic
     will be extended while the project is growing and getting more complex to hold more data about the user
 */
-package Data;
+package DataAccess.Models;
 
 public class User
 {

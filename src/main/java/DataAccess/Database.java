@@ -1,4 +1,4 @@
-package Data;
+package DataAccess;
 
 import java.sql.PreparedStatement;
 import java.sql.DriverManager;

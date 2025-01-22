@@ -4,8 +4,9 @@
     - all the table definitions are here
     - seeding the database (for example: if no users found it inserts the default user)
 */
-package Data;
+package DataAccess;
 
+import Core.PasswordUtils;
 import java.util.List;
 
 public class DatabaseInitializer {

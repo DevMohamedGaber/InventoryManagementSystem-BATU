@@ -3,7 +3,7 @@
     - Hashing the password in plain text to hashed text for database storage
     - comparing plain password to a hashed one from the database to see if they're the same or not
 */
-package Data;
+package Core;
 
 import org.mindrot.jbcrypt.BCrypt;
 
