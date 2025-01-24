@@ -8,17 +8,24 @@ package Core;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import Presentation.HomeWindow;
+import java.awt.Component;
+import Presentation.DashboardWindow;
+import Presentation.HomePage;
 import Presentation.LoginWindow;
+import Presentation.Users.AddUser;
+import Presentation.Users.ListUsers;
 
 public class UIManager
 {
-    public static UIManager Instance; // Singleton
+    public static UIManager Instance; // Singleton instance
     
     private final String _windowFixedTitle = "BATU Inventory Management System - ";
-    private final JFrame _window;
-    private JPanel _currentPanel;
-    
+    private final JFrame _window; // Window container
+    private JPanel _currentPanel; // current window loaded
+    private JPanel _routerPanel; // page container (width=875,height=624)
+    private JPanel _currentSubPanel; // current page loaded
+
+    // constractor to setup the default window (_window)
     public UIManager()
     {
         _window = new JFrame();
@@ -28,20 +35,46 @@ public class UIManager
         _window.setVisible(true);
     }
     
+    /**** Window Control ****/
     public void LoadLoginWindow()
     {
-        ResizeAndCenterWindow(350, 200);
-        LoadPanelToWindow(new LoginWindow());
+        ResizeAndCenterWindow(390, 240);
+        LoadPanelToWindow(new LoginWindow(), true);
         _window.setTitle("Login");
     }
-    public void LoadHomeWindow()
+    public void LoadDashboardWindow()
     {
         ResizeAndCenterWindow(1200, 680);
-        LoadPanelToWindow(new HomeWindow());
         SetWindowTitle("Home");
+        LoadPanelToWindow(new DashboardWindow(), false);
+        // get dashboard router panel
+        for(Component component : _currentPanel.getComponents())
+        {
+            if(component.getName() != null && component.getName().equals("dashboardRouterPanel"))
+            {
+                _routerPanel = (JPanel)component;
+                _routerPanel.setLayout(new BorderLayout());
+                break;
+            }
+        }
+        GoToHomePage();
     }
     
-    private void LoadPanelToWindow(JPanel panel)
+    /**** Page Control ****/
+    public void GoToHomePage() {
+        LoadSubPanelToWindow(new HomePage());
+    }
+    
+    // User Pages
+    public void GoToUsersListPage() {
+        LoadSubPanelToWindow(new ListUsers());
+    }
+    public void GoToAddUserPage() {
+        LoadSubPanelToWindow(new AddUser());
+    }
+    
+    /**** Helpers ****/
+    private void LoadPanelToWindow(JPanel panel, boolean repaint)
     {
         if(_currentPanel != null)
         {
@@ -49,9 +82,17 @@ public class UIManager
         }
         _currentPanel = panel;
         _window.add(_currentPanel, BorderLayout.CENTER);
-        
-        _window.revalidate();
-        _window.repaint();
+        if(repaint)
+        {
+            RepaintWindow();
+        }
+    }
+    private void LoadSubPanelToWindow(JPanel panel)
+    {
+        _routerPanel.removeAll();
+        _currentSubPanel = panel;
+        _routerPanel.add(_currentSubPanel);
+        RepaintWindow();
     }
     private void SetWindowTitle(String windowTitle)
     {
@@ -62,6 +103,12 @@ public class UIManager
         _window.setSize(width, height);
         _window.setLocationRelativeTo(null);
     }
+    private void RepaintWindow()
+    {
+        _window.revalidate();
+        _window.repaint();
+    }
+    
     public static void Instantiate()
     {
         if(Instance != null)

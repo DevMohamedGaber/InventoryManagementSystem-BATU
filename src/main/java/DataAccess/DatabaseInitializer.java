@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DatabaseInitializer {
     private static final String[] tablesQueries = {
-        "users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL)"
+        "users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL, email TEXT NOT NULL, role INTEGER NOT NULL)"
     };
     
     public static void EnsureDatabaseCreated()
@@ -33,7 +33,7 @@ public class DatabaseInitializer {
         List<String[]> result = Database.executeQuery(checkQuery);
         if(!result.isEmpty() && result.getFirst().length > 0 && result.getFirst()[0].equals("0"))
         {
-            String adminQuery = "INSERT INTO users(username,password) VALUES('admin',?)";
+            String adminQuery = "INSERT INTO users(username,password,email,role) VALUES('admin',?,'admin@batu.com',0)";
             Database.executeUpdate(adminQuery, PasswordUtils.hashPassword("admin"));
             System.out.println("No users found, auto-created admin user");
         }

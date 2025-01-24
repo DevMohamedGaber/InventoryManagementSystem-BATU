@@ -37,7 +37,7 @@ public class AuthenticationService
         }
         
         // check if the password is correct (hashed password)
-        if(!PasswordUtils.CheckPassword(password, user.getPassword()))
+        if(!PasswordUtils.CheckPassword(password, user.Password))
         {
             return "Wrong Password";
         }

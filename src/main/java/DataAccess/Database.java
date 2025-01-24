@@ -100,16 +100,4 @@ public class Database
         }
         return results;
     }
-//    private static void PrintResultSet(ResultSet resultSet) throws SQLException {
-//        ResultSetMetaData rsmd = resultSet.getMetaData();
-//        int columnsNumber = rsmd.getColumnCount();
-//        while (resultSet.next()) {
-//            for (int i = 1; i <= columnsNumber; i++) {
-//                if (i > 1) System.out.print(",  ");
-//                String columnValue = resultSet.getString(i);
-//                System.out.print("[" + rsmd.getColumnName(i) + "] => " + columnValue);
-//            }
-//            System.out.println("");
-//        }
-//    }
 }

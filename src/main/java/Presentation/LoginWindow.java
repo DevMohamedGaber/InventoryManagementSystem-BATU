@@ -34,20 +34,22 @@ public class LoginWindow extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         UsernameInput = new javax.swing.JTextField();
         UsernameLabel = new javax.swing.JLabel();
-        PasswordInput = new javax.swing.JTextField();
         PasswordLabel = new javax.swing.JLabel();
         LoginBtn = new javax.swing.JButton();
         ErrorMsg = new javax.swing.JLabel();
+        PasswordInput = new javax.swing.JPasswordField();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(UsernameInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 6, 237, 35));
+
+        UsernameInput.setText("admin");
+        UsernameInput.setPreferredSize(new java.awt.Dimension(95, 95));
+        jPanel1.add(UsernameInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 250, 40));
 
         UsernameLabel.setText("Username");
         jPanel1.add(UsernameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 15, -1, -1));
-        jPanel1.add(PasswordInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 47, 237, 35));
 
         PasswordLabel.setText("Password");
-        jPanel1.add(PasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 56, -1, -1));
+        jPanel1.add(PasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 20));
 
         LoginBtn.setText("Login");
         LoginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -55,47 +57,54 @@ public class LoginWindow extends javax.swing.JPanel {
                 LoginBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(LoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 116, 103, 36));
+        jPanel1.add(LoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 103, 36));
 
         ErrorMsg.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ErrorMsg.setForeground(new java.awt.Color(255, 0, 0));
         ErrorMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ErrorMsg.setText("Here is an Error Message");
-        jPanel1.add(ErrorMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 88, 326, -1));
+        jPanel1.add(ErrorMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 390, 30));
+
+        PasswordInput.setText("admin");
+        PasswordInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordInputActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PasswordInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 250, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 41, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
-        System.out.println("Entered password = " +  PasswordInput.getText());
         String error = _service.Login(UsernameInput.getText(), PasswordInput.getText());
         
         if(error == null)
         {
-            UIManager.Instance.LoadHomeWindow();
+            UIManager.Instance.LoadDashboardWindow();
             return;
         }
         ErrorMsg.setText(error);
     }//GEN-LAST:event_LoginBtnActionPerformed
 
+    private void PasswordInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordInputActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ErrorMsg;
     private javax.swing.JButton LoginBtn;
-    private javax.swing.JTextField PasswordInput;
+    private javax.swing.JPasswordField PasswordInput;
     private javax.swing.JLabel PasswordLabel;
     private javax.swing.JTextField UsernameInput;
     private javax.swing.JLabel UsernameLabel;
