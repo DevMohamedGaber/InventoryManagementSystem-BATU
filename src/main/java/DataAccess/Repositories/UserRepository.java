@@ -10,10 +10,20 @@ import java.util.List;
 
 public class UserRepository
 { 
-    public User GetUserByUsername(String username)
-    {
+    public User GetUserByUsername(String username) {
         String stmt = "SELECT * FROM users WHERE username = ?";
         List<String[]> userData = Database.executeQuery(stmt, username);
+        if(userData.isEmpty())
+        {
+            return null;
+        }
+        User user = new User(userData.getFirst());
+        return user;
+    }
+    
+    public User GetUserById(int id) {
+        String stmt = "SELECT * FROM users WHERE id = ?";
+        List<String[]> userData = Database.executeQuery(stmt, id);
         if(userData.isEmpty())
         {
             return null;

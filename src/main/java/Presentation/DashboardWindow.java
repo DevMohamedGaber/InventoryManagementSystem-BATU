@@ -5,18 +5,21 @@
 package Presentation;
 
 import Core.UIManager;
+import Services.AuthenticationService;
 
 /**
  *
  * @author MohamedGaber
  */
 public class DashboardWindow extends javax.swing.JPanel {
-
+    private final AuthenticationService _authService;
     /**
      * Creates new form Home
      */
     public DashboardWindow() {
         initComponents();
+        _authService = new AuthenticationService();
+        currentUserBtn.setText(AuthenticationService.currentUser.Username);
     }
 
     /**
@@ -38,6 +41,9 @@ public class DashboardWindow extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         NavBtn_Home = new javax.swing.JButton();
         topBarPanel = new javax.swing.JPanel();
+        logoutBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        currentUserBtn = new javax.swing.JButton();
         dashboardRouterPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(199, 197, 197));
@@ -189,15 +195,59 @@ public class DashboardWindow extends javax.swing.JPanel {
         topBarPanel.setBackground(new java.awt.Color(144, 138, 138));
         topBarPanel.setPreferredSize(new java.awt.Dimension(0, 0));
 
+        logoutBtn.setBackground(new java.awt.Color(203, 62, 80));
+        logoutBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        logoutBtn.setForeground(new java.awt.Color(255, 255, 255));
+        logoutBtn.setText("Logout");
+        logoutBtn.setBorder(null);
+        logoutBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Female User-2.png"))); // NOI18N
+        jLabel2.setToolTipText("");
+        jLabel2.setPreferredSize(new java.awt.Dimension(32, 32));
+
+        currentUserBtn.setBackground(new java.awt.Color(144, 138, 138));
+        currentUserBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        currentUserBtn.setForeground(new java.awt.Color(255, 255, 255));
+        currentUserBtn.setText("Username");
+        currentUserBtn.setBorder(null);
+        currentUserBtn.setBorderPainted(false);
+        currentUserBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        currentUserBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                currentUserBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout topBarPanelLayout = new javax.swing.GroupLayout(topBarPanel);
         topBarPanel.setLayout(topBarPanelLayout);
         topBarPanelLayout.setHorizontalGroup(
             topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBarPanelLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(currentUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         topBarPanelLayout.setVerticalGroup(
             topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(topBarPanelLayout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addGroup(topBarPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(currentUserBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(topBarPanelLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         dashboardRouterPanel.setBackground(new java.awt.Color(199, 197, 197));
@@ -221,10 +271,13 @@ public class DashboardWindow extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(NavigatorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(topBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 894, Short.MAX_VALUE)
-                    .addComponent(dashboardRouterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(dashboardRouterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(topBarPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 898, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -270,6 +323,14 @@ public class DashboardWindow extends javax.swing.JPanel {
         UIManager.Instance.GoToHomePage();
     }//GEN-LAST:event_NavBtn_HomeActionPerformed
 
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        _authService.Logout();
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void currentUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentUserBtnActionPerformed
+        UIManager.Instance.GoToViewUserPage(AuthenticationService.currentUser.Id);
+    }//GEN-LAST:event_currentUserBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton NavBtn_Customers;
@@ -280,8 +341,11 @@ public class DashboardWindow extends javax.swing.JPanel {
     private javax.swing.JButton NavBtn_Suppliers;
     private javax.swing.JButton NavBtn_Users;
     private javax.swing.JPanel NavigatorPanel;
+    private javax.swing.JButton currentUserBtn;
     private javax.swing.JPanel dashboardRouterPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton logoutBtn;
     private javax.swing.JPanel topBarPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,6 +13,6 @@ public class Program
         DataAccess.DatabaseInitializer.EnsureDatabaseCreated();
         // load first frame
         UIManager.Instantiate();
-        UIManager.Instance.LoadDashboardWindow();
+        UIManager.Instance.LoadLoginWindow();
     }
 }

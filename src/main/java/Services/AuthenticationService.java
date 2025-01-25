@@ -5,21 +5,19 @@
 package Services;
 
 import Core.PasswordUtils;
+import Core.UIManager;
 import DataAccess.Models.User;
 import DataAccess.Repositories.UserRepository;
 
-public class AuthenticationService
-{
+public class AuthenticationService {
     public static User currentUser = null;
     private final UserRepository _repository;
     
-    public AuthenticationService()
-    {
+    public AuthenticationService() {
         _repository = new UserRepository();
     }
     
-    public String Login(String username, String password)
-    {
+    public String Login(String username, String password) {
         // check if user enetered right data
         if(username.length() == 0) {
             return "you can't leave username field empty";
@@ -31,20 +29,27 @@ public class AuthenticationService
         // check if username in database
         var user = _repository.GetUserByUsername(username);
         
-        if(user == null)
-        {
+        if(user == null) {
             return "Username can't be found";
         }
         
         // check if the password is correct (hashed password)
-        if(!PasswordUtils.CheckPassword(password, user.Password))
-        {
+        if(!PasswordUtils.CheckPassword(password, user.Password)) {
             return "Wrong Password";
         }
         
         // set the user as current logged in user for all frames to access
         currentUser = user;
         return null;
+    }
+    
+    public void Logout() {
+        if(currentUser == null) {
+            System.out.println("No user logged in the system, please login first");
+            return;
+        }
+        currentUser = null;
+        UIManager.Instance.LoadLoginWindow();
     }
     
 }
