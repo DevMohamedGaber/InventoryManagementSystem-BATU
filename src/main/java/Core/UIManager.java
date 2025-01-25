@@ -14,6 +14,7 @@ import Presentation.HomePage;
 import Presentation.LoginWindow;
 import Presentation.Users.AddUser;
 import Presentation.Users.ListUsers;
+import Presentation.Users.ViewUser;
 
 public class UIManager
 {
@@ -26,8 +27,7 @@ public class UIManager
     private JPanel _currentSubPanel; // current page loaded
 
     // constractor to setup the default window (_window)
-    public UIManager()
-    {
+    public UIManager() {
         _window = new JFrame();
         _window.setTitle("BATU - Inventory Management System");
         _window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -36,14 +36,12 @@ public class UIManager
     }
     
     /**** Window Control ****/
-    public void LoadLoginWindow()
-    {
+    public void LoadLoginWindow() {
         ResizeAndCenterWindow(390, 240);
         LoadPanelToWindow(new LoginWindow(), true);
         _window.setTitle("Login");
     }
-    public void LoadDashboardWindow()
-    {
+    public void LoadDashboardWindow() {
         ResizeAndCenterWindow(1200, 680);
         SetWindowTitle("Home");
         LoadPanelToWindow(new DashboardWindow(), false);
@@ -72,47 +70,40 @@ public class UIManager
     public void GoToAddUserPage() {
         LoadSubPanelToWindow(new AddUser());
     }
-    
+    public void GoToViewUserPage(int userId) {
+        LoadSubPanelToWindow(new ViewUser(userId));
+    }
     /**** Helpers ****/
-    private void LoadPanelToWindow(JPanel panel, boolean repaint)
-    {
-        if(_currentPanel != null)
-        {
+    private void LoadPanelToWindow(JPanel panel, boolean repaint) {
+        if(_currentPanel != null) {
             _window.remove(_currentPanel);
         }
         _currentPanel = panel;
         _window.add(_currentPanel, BorderLayout.CENTER);
-        if(repaint)
-        {
+        if(repaint) {
             RepaintWindow();
         }
     }
-    private void LoadSubPanelToWindow(JPanel panel)
-    {
+    private void LoadSubPanelToWindow(JPanel panel) {
         _routerPanel.removeAll();
         _currentSubPanel = panel;
         _routerPanel.add(_currentSubPanel);
         RepaintWindow();
     }
-    private void SetWindowTitle(String windowTitle)
-    {
+    private void SetWindowTitle(String windowTitle) {
         _window.setTitle(_windowFixedTitle + windowTitle);
     }
-    private void ResizeAndCenterWindow(int width, int height)
-    {
+    private void ResizeAndCenterWindow(int width, int height) {
         _window.setSize(width, height);
         _window.setLocationRelativeTo(null);
     }
-    private void RepaintWindow()
-    {
+    private void RepaintWindow() {
         _window.revalidate();
         _window.repaint();
     }
     
-    public static void Instantiate()
-    {
-        if(Instance != null)
-        {
+    public static void Instantiate() {
+        if(Instance != null) {
             System.out.println("An instance of UIManager already exists");
             return;
         }

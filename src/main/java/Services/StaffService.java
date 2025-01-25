@@ -33,4 +33,15 @@ public class StaffService
         
         return result;
     }
+    
+    public User GetUserById(int userId) {
+        if(userId == 0) {
+            System.out.println("UserId = 0");
+            return null;
+        }
+        
+        var user = _repository.GetUserById(userId);
+        
+        return user;
+    }
 }
