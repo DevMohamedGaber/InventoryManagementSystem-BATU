@@ -43,6 +43,37 @@ public class AuthenticationService {
         return null;
     }
     
+    public String Register(String username, String password, String email, int roleId) {
+        if(username.isEmpty()) {
+            return "Username is empty";
+        }
+        if(password.isEmpty()) {
+            return "Password is empty";
+        }
+        if(email.isEmpty()) {
+            return "Email is empty";
+        }
+        if(password.isEmpty()) {
+            return "Password is empty";
+        }
+        if(roleId < 0 || roleId > 2) {
+            return "Password is empty";
+        }
+        
+        if(_repository.GetUserByUsername(username) != null) {
+            return "username already taken by another user";
+        }
+        
+        String hashedPassword = PasswordUtils.hashPassword(password);
+        boolean userCreated = _repository.CreateUser(username, hashedPassword, email, roleId);
+        
+        if(userCreated == false) {
+            return "failed to add user to database";
+        }
+        
+        return null;
+    }
+    
     public void Logout() {
         if(currentUser == null) {
             System.out.println("No user logged in the system, please login first");

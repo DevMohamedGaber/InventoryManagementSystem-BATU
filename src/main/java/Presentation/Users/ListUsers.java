@@ -8,15 +8,18 @@ import javax.swing.table.TableModel;
 public class ListUsers extends javax.swing.JPanel {
     private final StaffService _service;
     
+    
     public ListUsers() {
         initComponents();
         
         _service = new StaffService();
         
+        var usersList = _service.GetUsersList();
+        
         // populate datainto table
         DefaultTableModel table = (DefaultTableModel)usersTable.getModel();
-        for(String[] userData : _service.GetUsersList()) {
-            table.addRow(userData);
+        for(String[] user : usersList) {
+            table.addRow(user);
         }
     }
 

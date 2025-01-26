@@ -45,4 +45,9 @@ public class UserRepository
         }
         return result;
     }
+    public boolean CreateUser(String username, String password, String email, int roleId) {
+        String adminQuery = "INSERT INTO users(username,password,email,role) VALUES(?,?,?,?)";
+        int isAdded = Database.executeUpdate(adminQuery, username, password, email, roleId);
+        return isAdded > 0; 
+    }
 }

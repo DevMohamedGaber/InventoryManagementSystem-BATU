@@ -308,7 +308,7 @@ public class DashboardWindow extends javax.swing.JPanel {
     }//GEN-LAST:event_NavBtn_SuppliersActionPerformed
 
     private void NavBtn_InventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NavBtn_InventoryActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_NavBtn_InventoryActionPerformed
 
     private void NavBtn_CustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NavBtn_CustomersActionPerformed

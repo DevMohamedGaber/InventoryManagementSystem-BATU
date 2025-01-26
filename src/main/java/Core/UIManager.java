@@ -5,6 +5,7 @@
 */
 package Core;
 
+import Presentation.Categories.CategoryList;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -73,6 +74,13 @@ public class UIManager
     public void GoToViewUserPage(int userId) {
         LoadSubPanelToWindow(new ViewUser(userId));
     }
+    
+    // Category pages
+    public void GoToCategoryList() {
+        LoadSubPanelToWindow(new CategoryList());
+    }
+    
+    
     /**** Helpers ****/
     private void LoadPanelToWindow(JPanel panel, boolean repaint) {
         if(_currentPanel != null) {

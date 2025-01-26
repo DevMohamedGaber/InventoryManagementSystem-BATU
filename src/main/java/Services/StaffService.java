@@ -36,7 +36,7 @@ public class StaffService
     
     public User GetUserById(int userId) {
         if(userId == 0) {
-            System.out.println("UserId = 0");
+            System.out.println("UserId is empty");
             return null;
         }
         

@@ -376,9 +376,6 @@
               <Image iconType="3" name="/Female User-2.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[32, 32]"/>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="currentUserBtn">

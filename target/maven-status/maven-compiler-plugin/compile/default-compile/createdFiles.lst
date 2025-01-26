@@ -5,6 +5,7 @@ DataAccess\Models\Customer.class
 DataAccess\Repositories\SupplierRepository.class
 Presentation\LoginWindow.class
 Presentation\Users\ListUsers$1.class
+Presentation\Categories\CategoryList.class
 Services\AuthenticationService.class
 Presentation\DashboardWindow$6.class
 Presentation\DashboardWindow$1.class
@@ -22,6 +23,7 @@ DataAccess\Models\Category.class
 DataAccess\Repositories\CustomerRepository.class
 DataAccess\Repositories\ItemRepository.class
 Presentation\Users\ListUsers$2.class
+Presentation\Users\AddUser$1.class
 DataAccess\Repositories\UserRepository.class
 Presentation\DashboardWindow$2.class
 Presentation\DashboardWindow$7.class
