@@ -44,7 +44,7 @@ public class StaffService
         
         return user;
     }
-    public String UpdateUser(int id, String username, String email, int roleId) {
+    public String UpdateUser(User user, String username, String email, int roleId) {
         if(username.isEmpty()) {
             return "Username is empty";
         }
@@ -54,11 +54,11 @@ public class StaffService
         if(roleId < 0 || roleId > 2) {
             return "RoleId is outside of range";
         }
-        if(_repository.GetUserByUsername(username) != null) {
+        if(username.equals(user.Username) == false && _repository.GetUserByUsername(username) != null) {
             return "username already taken by another user";
         }
         
-        boolean userUpdated = _repository.UpdateUserData(id, username, email, roleId);
+        boolean userUpdated = _repository.UpdateUserData(user.Id, username, email, roleId);
         
         if(userUpdated == false) {
             return "failed to update user data in database";
@@ -66,5 +66,8 @@ public class StaffService
         
         return null;
         
+    }
+    public boolean DeleteUser(int id) {
+        return _repository.DeleteUser(id);
     }
 }

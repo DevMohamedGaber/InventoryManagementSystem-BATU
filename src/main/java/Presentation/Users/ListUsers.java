@@ -1,7 +1,9 @@
 package Presentation.Users;
 
 import Core.UIManager;
+import Core.Utilities;
 import Services.StaffService;
+import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -21,6 +23,9 @@ public class ListUsers extends javax.swing.JPanel {
         for(String[] user : usersList) {
             table.addRow(user);
         }
+        
+        // Center cell values
+        Utilities.SetTableAllignment(usersTable, JLabel.CENTER);
     }
 
     /**
@@ -52,6 +57,8 @@ public class ListUsers extends javax.swing.JPanel {
             }
         });
 
+        usersTable.setBackground(new java.awt.Color(242, 242, 242));
+        usersTable.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         usersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -75,6 +82,8 @@ public class ListUsers extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        usersTable.setRowHeight(30);
+        usersTable.setSelectionForeground(new java.awt.Color(51, 51, 51));
         usersTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 usersTableMouseClicked(evt);

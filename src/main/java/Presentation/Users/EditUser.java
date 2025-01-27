@@ -1,6 +1,5 @@
 package Presentation.Users;
 
-import Core.UIManager;
 import Core.UserRole;
 import DataAccess.Models.User;
 import Services.StaffService;
@@ -179,7 +178,7 @@ public class EditUser extends javax.swing.JPanel {
     }//GEN-LAST:event_resetBtnActionPerformed
 
     private void updateUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateUserBtnActionPerformed
-        String error = _service.UpdateUser(_user.Id, usernameInput.getText(), emailInput.getText(), roleInput.getSelectedIndex());
+        String error = _service.UpdateUser(_user, usernameInput.getText(), emailInput.getText(), roleInput.getSelectedIndex());
         
         if(error!= null) {
             errorMsg.setText(error);

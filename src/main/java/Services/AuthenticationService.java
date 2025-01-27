@@ -71,6 +71,44 @@ public class AuthenticationService {
         return null;
     }
     
+    public String ChangePassword(int id,String oldPassword,String newPassword,String confirmPassword) {
+        if(id <= 0) {
+            return "User id can't be 0";
+        }
+        if(oldPassword.isEmpty()) {
+            return "please enter old password";
+        }
+        if(newPassword.isEmpty()) {
+            return "please enter new password";
+        }
+        if(confirmPassword.isEmpty()) {
+            return "please confirm password";
+        }
+        if(newPassword.equals(confirmPassword) == false) {
+            return "password entered doesn't match the confirm password";
+        }
+        
+        User user = _repository.GetUserById(id);
+        
+        if(user == null) {
+            return "user not found";
+        }
+
+        if(!PasswordUtils.CheckPassword(oldPassword, user.Password)) {
+            return "old password is wrong";
+        }
+        
+        String newPasswordHashed = PasswordUtils.hashPassword(newPassword);
+        
+        boolean passwordUpdated = _repository.UpdateUserPassword(id, newPasswordHashed);
+        
+        if(passwordUpdated == false) {
+            return "failed to change password in database";
+        }
+        
+        return null;
+    }
+    
     public void Logout() {
         if(currentUser == null) {
             System.out.println("No user logged in the system, please login first");

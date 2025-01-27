@@ -2,6 +2,7 @@ D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Core\Passwo
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Core\Program.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Core\UIManager.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Core\UserRole.java
+D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Core\Utilities.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\DataAccess\Database.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\DataAccess\DatabaseInitializer.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\DataAccess\Models\Category.java
@@ -23,6 +24,7 @@ D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentatio
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentation\HomePage.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentation\LoginWindow.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentation\Users\AddUser.java
+D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentation\Users\ChangeUserPassword.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentation\Users\EditUser.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentation\Users\ListUsers.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentation\Users\ViewUser.java

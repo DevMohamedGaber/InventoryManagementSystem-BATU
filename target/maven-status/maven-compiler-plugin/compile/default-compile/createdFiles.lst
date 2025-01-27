@@ -21,11 +21,13 @@ DataAccess\Database.class
 Presentation\Users\ViewUser$2.class
 Presentation\DashboardWindow$8.class
 Presentation\DashboardWindow$5.class
+Presentation\Users\ChangeUserPassword.class
 DataAccess\Models\Export.class
 Presentation\Users\ViewUser.class
 DataAccess\Models\Customer.class
 DataAccess\Repositories\SupplierRepository.class
 Presentation\LoginWindow.class
+Presentation\Users\ViewUser$3.class
 Presentation\Users\ListUsers$1.class
 Presentation\DashboardWindow$1.class
 Presentation\HomePage.class
@@ -39,8 +41,10 @@ DataAccess\Models\Category.class
 DataAccess\Repositories\CustomerRepository.class
 Presentation\Users\AddUser$1.class
 Presentation\DashboardWindow$7.class
+Core\Utilities.class
 DataAccess\Repositories\ExportRepository.class
 Services\StaffService.class
+Presentation\Users\ChangeUserPassword$1.class
 Core\UserRole.class
 DataAccess\DatabaseInitializer.class
 DataAccess\Models\Supplier.class

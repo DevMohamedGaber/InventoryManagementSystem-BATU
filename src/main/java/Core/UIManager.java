@@ -14,6 +14,7 @@ import Presentation.DashboardWindow;
 import Presentation.HomePage;
 import Presentation.LoginWindow;
 import Presentation.Users.AddUser;
+import Presentation.Users.ChangeUserPassword;
 import Presentation.Users.EditUser;
 import Presentation.Users.ListUsers;
 import Presentation.Users.ViewUser;
@@ -78,12 +79,14 @@ public class UIManager
     public void GoToEditUserPage(int userId) {
         LoadSubPanelToWindow(new EditUser(userId));
     }
+    public void GoToChangeUserPasswordPage(int userId) {
+        LoadSubPanelToWindow(new ChangeUserPassword(userId));
+    }
     
     // Category pages
     public void GoToCategoryList() {
         LoadSubPanelToWindow(new CategoryList());
     }
-    
     
     /**** Helpers ****/
     private void LoadPanelToWindow(JPanel panel, boolean repaint) {

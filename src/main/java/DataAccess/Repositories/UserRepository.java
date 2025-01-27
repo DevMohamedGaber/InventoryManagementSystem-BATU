@@ -57,4 +57,15 @@ public class UserRepository
         int isUpdated = Database.executeUpdate(stmt, username, email, roleId, id);
         return isUpdated > 0;
     }
+    
+    public boolean DeleteUser(int id) {
+        String stmt = "DELETE FROM users WHERE id = ?";
+        int isDeleted = Database.executeUpdate(stmt, id);
+        return isDeleted > 0;
+    }
+    public boolean UpdateUserPassword(int id, String password) {
+        String stmt = "UPDATE users SET password = ? WHERE id = ?";
+        int isUpdated = Database.executeUpdate(stmt, password, id);
+        return isUpdated > 0;
+    }
 }
