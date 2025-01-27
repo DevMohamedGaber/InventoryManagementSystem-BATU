@@ -45,9 +45,16 @@ public class UserRepository
         }
         return result;
     }
+    
     public boolean CreateUser(String username, String password, String email, int roleId) {
-        String adminQuery = "INSERT INTO users(username,password,email,role) VALUES(?,?,?,?)";
-        int isAdded = Database.executeUpdate(adminQuery, username, password, email, roleId);
+        String stmt = "INSERT INTO users(username,password,email,role) VALUES(?,?,?,?)";
+        int isAdded = Database.executeUpdate(stmt, username, password, email, roleId);
         return isAdded > 0; 
+    }
+    
+    public boolean UpdateUserData(int id, String username, String email, int roleId) {
+        String stmt = "UPDATE users SET username = ?,email = ?, role = ? WHERE id = ?";
+        int isUpdated = Database.executeUpdate(stmt, username, email, roleId, id);
+        return isUpdated > 0;
     }
 }

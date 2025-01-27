@@ -44,4 +44,27 @@ public class StaffService
         
         return user;
     }
+    public String UpdateUser(int id, String username, String email, int roleId) {
+        if(username.isEmpty()) {
+            return "Username is empty";
+        }
+        if(email.isEmpty()) {
+            return "Email is empty";
+        }
+        if(roleId < 0 || roleId > 2) {
+            return "RoleId is outside of range";
+        }
+        if(_repository.GetUserByUsername(username) != null) {
+            return "username already taken by another user";
+        }
+        
+        boolean userUpdated = _repository.UpdateUserData(id, username, email, roleId);
+        
+        if(userUpdated == false) {
+            return "failed to update user data in database";
+        }
+        
+        return null;
+        
+    }
 }

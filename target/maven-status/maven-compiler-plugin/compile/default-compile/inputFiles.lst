@@ -23,6 +23,7 @@ D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentatio
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentation\HomePage.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentation\LoginWindow.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentation\Users\AddUser.java
+D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentation\Users\EditUser.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentation\Users\ListUsers.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Presentation\Users\ViewUser.java
 D:\College\3rd\Projects\Java\InventoryManagementSystem\src\main\java\Services\AuthenticationService.java

@@ -14,6 +14,7 @@ import Presentation.DashboardWindow;
 import Presentation.HomePage;
 import Presentation.LoginWindow;
 import Presentation.Users.AddUser;
+import Presentation.Users.EditUser;
 import Presentation.Users.ListUsers;
 import Presentation.Users.ViewUser;
 
@@ -73,6 +74,9 @@ public class UIManager
     }
     public void GoToViewUserPage(int userId) {
         LoadSubPanelToWindow(new ViewUser(userId));
+    }
+    public void GoToEditUserPage(int userId) {
+        LoadSubPanelToWindow(new EditUser(userId));
     }
     
     // Category pages

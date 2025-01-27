@@ -53,11 +53,8 @@ public class AuthenticationService {
         if(email.isEmpty()) {
             return "Email is empty";
         }
-        if(password.isEmpty()) {
-            return "Password is empty";
-        }
         if(roleId < 0 || roleId > 2) {
-            return "Password is empty";
+            return "RoleId is outside of range";
         }
         
         if(_repository.GetUserByUsername(username) != null) {
